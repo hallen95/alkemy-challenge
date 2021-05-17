@@ -1,8 +1,10 @@
 import './App.css';
-import { Home } from './pages'
+import LoginContainer from './containers/logincontainer/LoginContainer'
 
 function App() {
-  return <Home />
+  return <>
+    <LoginContainer/>
+    </>
 }
 
 export default App;
