@@ -36,31 +36,16 @@ const MyTextInput = ({ label, ...props }) => {
       </div>
     );
   };
-  
-  const MySelect = ({ label, ...props }) => {
-    const [field, meta] = useField(props);
-    return (
-      <div>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <select {...field} {...props} />
-        {meta.touched && meta.error ? (
-          <div className="error">{meta.error}</div>
-        ) : null}
-      </div>
-    );
-  };
 
   const SignupForm = () => {
     return (
-      <>
-        <h1>Subscribe!</h1>
+      <div className="signup-container">
         <Formik
           initialValues={{
             firstName: '',
             lastName: '',
             email: '',
             acceptedTerms: false, // added for our checkbox
-            jobType: '', // added for our select
           }}
           validationSchema={Yup.object({
             firstName: Yup.string()
@@ -111,14 +96,6 @@ const MyTextInput = ({ label, ...props }) => {
               placeholder="jane@formik.com"
             />
   
-            <MySelect label="Job Type" name="jobType">
-              <option value="">Select a job type</option>
-              <option value="designer">Designer</option>
-              <option value="development">Developer</option>
-              <option value="product">Product Manager</option>
-              <option value="other">Other</option>
-            </MySelect>
-  
             <MyCheckbox name="acceptedTerms">
               I accept the terms and conditions
             </MyCheckbox>
@@ -126,7 +103,7 @@ const MyTextInput = ({ label, ...props }) => {
             <button type="submit">Submit</button>
           </Form>
         </Formik>
-      </>
+      </div>
     );
   };
 

@@ -1,1 +1,1 @@
-export { default as SignupForm } from './form/Form'
+export { default as LeftLoginSide } from './leftloginside/LeftLoginSide'
