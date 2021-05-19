@@ -434,6 +434,13 @@
     margin-top: 1rem;
   }
   
-.signup-container {
+.login-image {
+  width: 1050px;
+  height: 100vh; 
+}
+
+.login-form{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
