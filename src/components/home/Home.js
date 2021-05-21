@@ -1,3 +1,5 @@
+import { NavBar } from '..'
+
 const Home = () => {
     // como hacemos para llamar a los heroes aca? 
     /* que necesita el home principalmente? 
@@ -10,7 +12,9 @@ const Home = () => {
         cards
         jumbo
     contenedor     */
-    return <p> hola desde el home </p>
+    return (
+        <NavBar />
+    )
 }
 
 export default Home;

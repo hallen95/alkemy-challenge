@@ -42,7 +42,7 @@ const MyTextInput = ({ label, ...props }) => {
   const SignupForm = () => {
     return (
       <Container fluid>
-        <Row style={{display:"flex"}}>
+        <Row>
           <Col lg={5} md={12}>
             <div><img  src={img} alt="left side login" className="login-image"/></div>
           </Col>

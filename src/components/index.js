@@ -1,1 +1,6 @@
-export { default as LeftLoginSide } from './leftloginside/LeftLoginSide'
+export { default as NavBar } from './navbar/Navbar'
+export { default as Home } from './home/Home'
+export { default as Login } from './login/Login'
+export { default as CardItem } from './card/card'
+export { default as GeneralStats } from './stats/generalStats'
+export { default as PrimaryStates } from './categorizacion/PrimaryStats'

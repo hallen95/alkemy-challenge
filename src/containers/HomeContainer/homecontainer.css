@@ -1,0 +1,21 @@
+.home-title {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    padding-top: 70px;
+    letter-spacing: 7px;
+    color: #fff;
+}
+
+.home-container {
+    background-color: rgb(36, 36, 36);
+    height: 100vh;
+    width: 100vw;
+}
+
+.home-container__cards {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+}

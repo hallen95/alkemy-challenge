@@ -11,7 +11,7 @@
   
   /* Form
   ––––––––––––––––––––––––––––––––– */
-  label {
+  /* label {
     font-weight: bold;
     display: flex;
   }
@@ -290,7 +290,7 @@
   
   /* Tables
   ––––––––––––––––––––––––––––––––– */
-  table {
+  /* table {
     width: 100%;
     border-spacing: 0;
     margin-bottom: 1.563rem;
@@ -329,7 +329,7 @@
 
   /* List
   ––––––––––––––––––––––––––––––––– */
-  ul {
+  /* ul {
     margin: 0;
     padding: 0 1px;
     list-style: disc outside;
@@ -350,10 +350,10 @@
   li {
     list-style-position: inside;
   }
-  
+   */
   /* Keyboard
   ––––––––––––––––––––––––––––––––– */
-  kbd {
+  /* kbd {
     display: inline-block;
     padding: 0 0.328rem;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
@@ -365,11 +365,11 @@
     border: solid 1px var(--gray-300);
     border-bottom: solid 2px var(--gray-500);
     border-radius: 5px;
-  }
+  } */
   
   /* Abbreviation
   ––––––––––––––––––––––––––––––––– */
-  abbr {
+  /* abbr {
     text-decoration: none;
     border-bottom: 2px dashed var(--gray-600);
   }
@@ -412,9 +412,9 @@
   button[type="reset"]:hover {
     background-color: var(--gray-400);
   }
-  
+   */
   /* custom */
-  input[type="email"],
+  /* input[type="email"],
   input[type="text"],
   input[type="number"],
   textarea,
@@ -432,8 +432,8 @@
   
   button[type="submit"] {
     margin-top: 1rem;
-  }
-  
+  } */
+
 .login-image {
   width: 1050px;
   height: 100vh; 

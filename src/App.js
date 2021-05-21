@@ -1,9 +1,10 @@
-import LoginContainer from './containers/logincontainer/LoginContainer'
+import { LoginContainer, HomeContainer }from './containers'
 
 function App() {
-  return <>
-    <LoginContainer/>
-    </>
+  return (<>
+    <HomeContainer />
+    {/* <LoginContainer/> */}
+    </>)
 }
 
 export default App;
