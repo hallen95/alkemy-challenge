@@ -1,18 +1,46 @@
-import { Jumbotron, Button } from 'react-bootstrap'
+import { Jumbotron, Table, Container, Row, Col } from 'react-bootstrap'
 
 /* este componente es el que se encarga de recibir las estadisticas y hacer los calculos */
 const GeneralStats = () => {
     return (
+        <Container>
         <Jumbotron>
-        <p>
-            This is a simple hero unit, a simple jumbotron-style component for calling
-            extra attention to featured content or information.
-        </p>
-        <p>
-            <Button variant="primary">Learn more</Button>
-        </p>
+            <Row>
+            <Table striped bordered hover variant="dark">
+                <tbody>
+                    <tr>
+                    <td>intelligence</td>
+                    <td>Strength</td>
+                    <td>Speed</td>
+                    <td>Weight</td>
+                    </tr>
+                    <tr>
+                    <td>Durability</td>
+                    <td>Combat</td>
+                    <td>Power</td>
+                    <td>Height</td>
+                    </tr>
+                    <tr>
+                    <td colSpan="4">Main category</td>
+                    </tr>
+                </tbody>
+                </Table>
+            </Row>
         </Jumbotron>
+        </Container>
     )
 }
 
 export default GeneralStats;
+{/* <ul>
+    <li>intelligence</li>
+    <li>Strength</li>
+    <li>Speed</li>
+    <li>Weight</li>
+
+    <li>Durability</li>
+    <li>Power</li>
+    <li>Combat</li>
+    <li>Height</li>
+
+</ul> */}

@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 const CardItem = () => {
 
     return (
-            <Card style={{ width: '15rem', display: "flex", backgroundColor: "#BA5555" }} >
+            <Card style={{ width: '17rem', height:'18rem', display: "flex", flexWrap: "nowrap", backgroundColor: "#BA5555" }} >
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
                 <Card.Title>Heroe</Card.Title>
