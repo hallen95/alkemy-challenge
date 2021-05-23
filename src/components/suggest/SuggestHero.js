@@ -1,14 +1,26 @@
+import { useEffect, useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
+import './suggestohero.css'
+import axios from 'axios'
 
-const SuggestHero = ({ suggests }) => {
+const SuggestHero = () => {
+    const [allHeros, setAllHeros] = useState([])
+    const LIMIT = 6
+
+    useEffect(() => {
+        axios.get("https://akabab.github.io/superhero-api/api/all.json")
+        .then(res => {
+            const heroLimited = res.data.slice(0, LIMIT)
+            setAllHeros(heroLimited)});
+      }, []);
 
     return (
         <>
-        {suggests && suggests.map((suggest) => {
+        {allHeros && allHeros.map((suggest) => {
         return (
-        <Card key={suggest.id} style={{ width: '17rem', height:'18rem', display: "flex", flexWrap: "nowrap", backgroundColor: "#BA5555" }} >
-                    <Card.Img variant="top" src={suggest.images.sm} />
-        <Card.Body>
+        <Card key={suggest.id} id="#suggest__card" style={{width: "10rem", height: "15rem" }}>
+            <Card.Img src={suggest.images.sm} className="suggest_image" />
+        <Card.Body className="suggest__body">
             <Card.Title>{suggest.name}</Card.Title>
             <Card.Text>
             Some quick example text to build on the card title and make up the bulk of

@@ -8,6 +8,7 @@
     color: #fff;
 }
 
+
 .search__row {
     display: flex;
     justify-content: center;
@@ -29,6 +30,18 @@
     padding-top: 40px;
 }
 
+.search__textrecomend {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #e3e3e3;
+    font-weight: bold;
+    padding-top: 40px;
+}
+
+/* .search__suggest {
+    max-width: 300px;
+    max-height: 300px;
+} */
 /* .search__row--button {
     display: flex;
     justify-content: flex-end;

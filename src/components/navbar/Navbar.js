@@ -4,11 +4,12 @@ import './navbar.css'
 
 const NavBar = () => {
     return (
-        <Navbar variant="dark" className="navbar__container" style={{
-          backgroundColor: "rgb(36, 36, 36)", justifyContent: "flex-end"}}>
-        <Navbar.Brand href="#home" style={{flex:"1", marginLeft: "40px"}}>HeroCall</Navbar.Brand>
-        <Nav  style={{marginRight: "40px"}}>
-          <Nav.Link className="navbar__link" href="#home">Buscar Heroes</Nav.Link>
+        <Navbar variant="dark" className="navbar__container">
+        <Link to="/" className="navbar__image"><Navbar.Brand>HeroCall</Navbar.Brand></Link>
+        <Nav className="navbar__menu">
+          <Link to="/search"  className="navbar__link">
+            <Nav.Link href="#searching">Buscar Heroes</Nav.Link>
+          </Link>
           <Nav.Link className="navbar__link"  href="#features">Mi Panel</Nav.Link>
           <Nav.Link className="navbar__link" href="#pricing">Logout</Nav.Link>
         </Nav>
