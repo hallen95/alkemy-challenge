@@ -1,4 +1,4 @@
-import { GeneralStats, PrimaryStats } from '../../components'
+import { GeneralStats } from '../../components'
 
 const StatsContainer = () => { 
     return (

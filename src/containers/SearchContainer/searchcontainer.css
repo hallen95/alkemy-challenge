@@ -1,0 +1,35 @@
+.search__title {
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #1a202c;
+    font-weight: 700;
+    padding-top: 70px;
+    letter-spacing: 7px;
+    color: #fff;
+}
+
+.search__row {
+    display: flex;
+    justify-content: center;
+    background-color: #1a202c;
+}
+
+.search__text {
+    text-align: center;
+}
+
+.search__text {
+    padding-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+
+.search__row-input {
+    padding-top: 40px;
+}
+
+/* .search__row--button {
+    display: flex;
+    justify-content: flex-end;
+} */

@@ -32,15 +32,3 @@ const GeneralStats = () => {
 }
 
 export default GeneralStats;
-{/* <ul>
-    <li>intelligence</li>
-    <li>Strength</li>
-    <li>Speed</li>
-    <li>Weight</li>
-
-    <li>Durability</li>
-    <li>Power</li>
-    <li>Combat</li>
-    <li>Height</li>
-
-</ul> */}
