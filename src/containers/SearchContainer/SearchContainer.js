@@ -1,15 +1,7 @@
-/* para este componente necesitamos 
-el navbar - listo
-un h1 - listo
-el input + boton listo 
-un parrafo + listo
-y 6 cards + listo
-*/
 import { useEffect, useState } from 'react'
 import './searchcontainer.css'
 import { InputSearch, SuggestHero, CardResponse } from '../../components'
-import { Container, Row, Button, Col } from 'react-bootstrap'
-import axios from 'axios'
+import { Container, Row, Col } from 'react-bootstrap'
 
 const SearchContainer = () => {
     const [ dataResponse, setDataResponse ] = useState([]);
@@ -20,7 +12,7 @@ const SearchContainer = () => {
     useEffect(() => {
         console.log("dataresponse", dataResponse);
         console.log("success", dataResponse.response);
-    }, [dataResponse, searchResponse])
+    }, [dataResponse])
 
     return (
     <Container fluid className="search__container">
@@ -40,7 +32,7 @@ const SearchContainer = () => {
             {dataResponse.response === "success" ? <CardResponse dataResponse={dataResponse} /> : <p>Algunas sugerencias podrían ser...</p> }
         </Row>
         <Row>
-            {!dataResponse.response === "success" ? <SuggestHero className="search__suggest" /> : null}
+            {dataResponse.response === undefined ? <SuggestHero className="search__suggest" /> : null}
         </Row>
     </Container>
     )

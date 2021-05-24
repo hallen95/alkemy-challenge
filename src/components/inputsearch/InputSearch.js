@@ -24,7 +24,6 @@ const InputSearch = ({ searchResponse }) => {
         <Formik
             initialValues={{
             hero: '',
-            // added for our checkbox
             }}
             validationSchema={Yup.object({
             hero: Yup.string()
@@ -33,7 +32,6 @@ const InputSearch = ({ searchResponse }) => {
             })}
             onSubmit={async (values) => {
                 try {
-                console.log("values", values);
                 const heroresponse = await axios.get(`https://superheroapi.com/api/4298272713525886/search/${values.hero}`)
                 searchResponse(heroresponse.data);
             }
@@ -41,13 +39,7 @@ const InputSearch = ({ searchResponse }) => {
                     console.log("error", error.message);
                 }
             }}
-            // onSubmit={(values, { setSubmitting }) => {
-            // setTimeout(() => {
-            //     console.log("values", values);
-            //     alert(JSON.stringify(values, null, 2));
-            //     setSubmitting(false);
-            // }, 400);
-            // }}
+
         >
         {( { isSubmitting }) => (
             <Form >

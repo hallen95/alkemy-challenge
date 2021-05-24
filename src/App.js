@@ -10,10 +10,12 @@ function App() {
       <Route exact path="/search">
         <SearchContainer />
       </Route>
+      <Route exact path="/signup">
+        <LoginContainer/>
+      </Route>
       <Route path="/">
         <HomeContainer />
       </Route>
-    {/* <LoginContainer/> */}
     </Switch>
   </Router>)
 }
