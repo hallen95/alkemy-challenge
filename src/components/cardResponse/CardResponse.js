@@ -6,7 +6,7 @@ ruta=> agregar desde el search
  */ 
 import { useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
-import useHeroContext from '../../context/HeroContext'
+import  useHeroContext  from '../../context/HeroContext'
 import emptyCards from '../../utilities/emptyCards'
 /* este boton añadir tiene que guardar dataResponse de result.id para guardar ese en particular
 y pasarlo en la funcion onClick */ 
@@ -18,13 +18,12 @@ const heroAdded = (data) => {
 
 const CardResponse = ({ dataResponse }) => {
     const { hero, setHero } = useHeroContext();
-    console.log("hero desde el card", hero )
 
-    // useEffect(() => {
-    //     setHero([...emptyCards]);
-    //     console.log("hero desde el useffect", hero);
-    // }, [])
-
+    useEffect(() => {
+        setHero([...emptyCards]);
+    }, [])
+    
+    console.log("hero desde el useffect", hero);
     return(
     <>
         {dataResponse.results.map((result) => {
@@ -37,7 +36,7 @@ const CardResponse = ({ dataResponse }) => {
             Some quick example text to build on the card title and make up the bulk of
             the card's content.
             </Card.Text>
-            <Button variant="danger" style={{justifyContent: "center"}} onClick={() => setHero(emptyCards)}>Añadir</Button>
+            <Button variant="danger" style={{justifyContent: "center"}} onClick={() => console.log("click")}>Añadir</Button>
         </Card.Body>
         </Card>)
         })}

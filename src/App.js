@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { LoginContainer, HomeContainer, SearchContainer }from './containers'
 import { NavBar } from './components'
+import { HeroContext, HeroProvider } from './context/HeroContext'
 
 function App() {
   return (
   <Router>
+    <HeroProvider>
     <NavBar />
     <Switch>
       <Route exact path="/search">
@@ -17,6 +19,7 @@ function App() {
         <HomeContainer />
       </Route>
     </Switch>
+    </HeroProvider>
   </Router>)
 }
 

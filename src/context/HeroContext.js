@@ -7,9 +7,14 @@ const useHeroContext = () => useContext(HeroContext)
 export const HeroProvider = ({ children }) => {
     const [ hero, setHero ] = useState([])
 
+    const addHero = () => {
+
+    }
+
     return (
         <HeroContext.Provider value={{ hero, setHero }}>
             {children}
         </HeroContext.Provider>)
 }
+
 export default useHeroContext;
