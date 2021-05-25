@@ -46,3 +46,8 @@
     display: flex;
     justify-content: flex-end;
 } */
+
+.suggest__hero {
+    display: flex;
+    background-color: #1a202c;
+}

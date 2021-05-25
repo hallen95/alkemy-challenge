@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios from 'axios'
+import './inputsearch.css'
 import { Formik, Form, useField } from 'formik'
-import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap'
 import * as Yup from 'yup'
 
 const MyTextInput = ({ label, ...props }) => {
@@ -10,11 +11,11 @@ const MyTextInput = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     return (
         <>
-          <label htmlFor={props.id || props.name}>{label}</label>
+          <label className="form__label" htmlFor={props.id || props.name}>{label}</label>
           <input  {...field} {...props} />
-          {meta.touched && meta.error ? (
+          {/* {meta.touched && meta.error ? (
             <div >{meta.error}</div>
-          ) : null}
+          ) : null} */}
         </>
       );
 }
@@ -42,15 +43,16 @@ const InputSearch = ({ searchResponse }) => {
 
         >
         {( { isSubmitting }) => (
-            <Form >
+            <Form className="form__formik">
             <MyTextInput
+                className="form__input"
                 label="hero"
                 name="hero"
                 type="text"
                 placeholder="Busque su héroe"
             />
 
-            <Button type="submit" disable={isSubmitting}>Submit</Button>
+            <Button className="form__button" type="submit" disable={isSubmitting}>Submit</Button>
             </Form>
         )}
         </Formik>)

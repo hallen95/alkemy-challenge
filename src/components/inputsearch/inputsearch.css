@@ -1,0 +1,19 @@
+.form__formik {
+    display: flex;
+    height: 38px;
+}
+
+.form__input {
+    width: 744px;
+}
+
+.form__label{
+    display: none;
+}
+
+@media(max-width: 600px) {
+    .form__input {
+    margin-left: 0;
+    }
+
+}
