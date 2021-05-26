@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { LoginContainer, HomeContainer, SearchContainer }from './containers'
 import { NavBar } from './components'
-import { HeroContext, HeroProvider } from './context/HeroContext'
+import { HeroProvider } from './context/HeroContext'
 
 function App() {
   return (

@@ -1,18 +1,12 @@
 import { CardItem } from '../../components/'
-import { useState, useEffect } from 'react'
-import emptyCards from '../../utilities/emptyCards'
+import useHeroContext from '../../context/HeroContext'
 
-const CardContainer = ({ setAddHero, addHero }) => {
-    const [ heros, setHeros ] = useState([])
-
-    useEffect(() => { 
-        setHeros(emptyCards)
-        console.log(heros)
-    }, [heros])
+const CardContainer = () => {
+    const { selectedHero } = useHeroContext();
 
     return (
         <>
-    {heros.map((hero) =>  <CardItem key={hero.id} className="card-item"/>)}
+    {selectedHero.map((hero) =>  <CardItem key={hero.id} hero={hero} className="card-item"/>)}
         </>)
 }
 

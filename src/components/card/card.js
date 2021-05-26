@@ -1,17 +1,22 @@
+import { useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap'
+import useHeroContext from '../../context/HeroContext'
 
-const CardItem = () => {
+// este componente se va a transformar en el contenedor de los heroes 
+/* aca tiene que llegar la data del click e imprimir en el home 
+los heroes seleccionados deben permanecer en el store  */ 
+const CardItem = ({ hero }) => {
+
 
     return (
-            <Card style={{ width: '17rem', height:'18rem', display: "flex", flexWrap: "nowrap", backgroundColor: "#BA5555" }} >
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+            <Card style={{ width: '17rem',  backgroundColor: "#232425" }} >
+            <Card.Img variant="top" src={hero.image.url} />
             <Card.Body>
-                <Card.Title>Heroe</Card.Title>
+                <Card.Title>{hero.name}</Card.Title>
                 <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                    {hero.biography}
                 </Card.Text>
-                <Button variant="danger" style={{justifyContent: "center"}}>Añadir</Button>
+                <Button variant="danger">Stats</Button>
             </Card.Body>
             </Card>
         )

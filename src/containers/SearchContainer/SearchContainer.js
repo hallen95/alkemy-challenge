@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './searchcontainer.css'
 import { InputSearch, SuggestHero, CardResponse } from '../../components'
 import { Container, Row, Col } from 'react-bootstrap'
@@ -8,11 +8,6 @@ const SearchContainer = () => {
     const searchResponse = (value) => {
         setDataResponse(value)
     }
-
-    useEffect(() => {
-        console.log("dataresponse", dataResponse);
-        console.log("success", dataResponse.response);
-    }, [dataResponse])
 
     return (
     <Container fluid className="search__container">
