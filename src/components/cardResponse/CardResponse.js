@@ -14,8 +14,7 @@ necesitamos otro estado global para el stock de heroes seleccionados  */
 
 const CardResponse = ({ dataResponse }) => {
     const { hero, setHero, heroAdded } = useHeroContext();
-    
-
+    //results.biography.alignment
     return(
     <>
         {dataResponse.results.map((result) => {
