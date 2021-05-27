@@ -1,20 +1,13 @@
 /* para la logica de los botones que necesitamos? 
 un array de objetos donde estén guardados los heroes 
-una funcion para validar si son heroes o villanos
-
-ruta=> agregar desde el search  
- */ 
-import { useEffect } from 'react'
+una funcion para validar si son heroes o villanos */ 
 import { Card, Button } from 'react-bootstrap'
 import  useHeroContext  from '../../context/HeroContext'
-import emptyCards from '../../utilities/emptyCards'
 /* este boton va a guardar en setHero la info del heroe clickado 
 necesitamos otro estado global para el stock de heroes seleccionados  */ 
 
-
 const CardResponse = ({ dataResponse }) => {
-    const { hero, setHero, heroAdded } = useHeroContext();
-    //results.biography.alignment
+    const { heroAdded } = useHeroContext();
     return(
     <>
         {dataResponse.results.map((result) => {

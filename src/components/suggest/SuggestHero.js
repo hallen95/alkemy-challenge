@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Card, Button, Container, Row, Col } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import './suggestohero.css'
 import axios from 'axios'
 
