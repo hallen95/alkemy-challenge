@@ -73,64 +73,11 @@ export const HeroProvider = ({ children }) => {
         setSelectedHero(filtered)
     }
 
-    const totalStats = {
-        combat: 0,
-        durability: 0, 
-        intelligence: 0,
-        power: 0,
-        strength: 0,
-        speed: 0
-     }
-
-    //  const parsingValues = () => {
-    //     let arrayIntelligence = []
-    //     let sum = 0
-    //     console.log("herolength", selectedHero.length)
-    //     // si selected hero tiene al menos 1 hace el for.
-    //         if(selectedHero.length >= 1){
-    //             for(let i = 0; i <= selectedHero.length; i++){
-    //             let intelligenceParsed = parseInt(selectedHero.stats.intelligence)
-    //             arrayIntelligence.push(intelligenceParsed)
-    //             console.log("intelishense", intelligenceParsed);
-    //             }
-    //         } else {
-    //             return console.log("aqui no hay nada")
-    //         }
-    //     arrayIntelligence.length < 2 ? sum = (arrayIntelligence[0]) 
-    //     :
-    //     (arrayIntelligence.reduce((accumulator, currentValue) => {
-    //         return sum = (accumulator + currentValue)
-    //     }))
-    //     totalStats.intelligence = sum
-    //     return 
-    // }
-    // parsingValues();    
-     const [ intelligence, setIntelligence ] = useState([])
-    useEffect(() => {
-        const mappingIntelligence = () => {
-            selectedHero.map((hero) => 
-                setIntelligence([...intelligence, parseInt(hero.stats.intelligence)])
-            )
-        }
-        mappingIntelligence()
-        // intelligence.length && reducerValue()
-        // con esto tenemos el array con los valores que necesitamos. 
-
-        
-    }, [selectedHero])
-    //chequear esto que esta complicado
-    const finaltest = () => {const reducer = (accumulator, currentValue) => accumulator + currentValue
-    const reducer2 = () => intelligence.reduce(reducer)
-    if(intelligence.length) totalStats.intelligence = reducer2()}
-    finaltest()
-
-
-    console.log("array intell", intelligence)
 
     return (
         <HeroContext.Provider value={{ 
             selectedHero, setSelectedHero, heroContador, 
-            setHeroContador, heroAdded, deleteHero, totalStats, intelligence }}>
+            setHeroContador, heroAdded, deleteHero }}>
             {children}
         </HeroContext.Provider>)
 }
