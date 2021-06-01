@@ -16,15 +16,16 @@ export const HeroProvider = ({ children }) => {
     const MAXQUANTITY = 6;
 
     const heroAdded = (data) => {
-        let hero = {
-            id: data.id,
-            name: data.name,
-            stats: data.powerstats,
-            image: data.image,
-            alignment: data.biography.alignment
-        }
+        console.table("data",data)
+        // let hero = {
+        //     id: data.id,
+        //     name: data.name,
+        //     stats: data.powerstats,
+        //     image: data.images.sm || data.image.url,
+        //     alignment: data.biography.alignment
+        // }
         if(selectedHero.length <= MAXQUANTITY) {
-            handleAlignment(hero)} 
+            handleAlignment(data)} 
         setHeroContador(heroContador => heroContador + 1)
     }
     /* primero tendríamos que tener el addHero, crear el objeto
