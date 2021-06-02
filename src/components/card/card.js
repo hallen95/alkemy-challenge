@@ -9,7 +9,7 @@ const CardItem = ({ hero }) => {
 
     return (
             <Card style={{ width: '17rem',  backgroundColor: "#232425" }} >
-            <Card.Img variant="top" src={hero.image.url || hero.images.sm} />
+            <Card.Img variant="top" src={hero.image.url} />
             <Card.Body>
                 <Card.Title style={{color: '#fff'}}>{hero.name}</Card.Title>
                 <Card.Text>

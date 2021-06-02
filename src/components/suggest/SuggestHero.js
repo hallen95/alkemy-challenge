@@ -5,25 +5,30 @@ import useHeroContext from '../../context/HeroContext'
 
 const SuggestHero = () => {
     const { heroAdded } = useHeroContext()
-    const [allHeros, setAllHeros] = useState([0,1,2,3,4,5])
+    const [ allHeros, setAllHeros ] = useState([])
     const LIMIT = 5
     let randomNumber = 0
     const API = "https://superheroapi.com/api/4298272713525886/${id}"
     const randomHeros = () => {
+        do {
         randomNumber = Math.random(0,1)*500
-        return randomNumber
+        setAllHeros([...allHeros, randomNumber])
+        }
+        while(allHeros.length < LIMIT)
+        return
     }
-
+    randomHeros()
+    console.log(AllHeros);
     useEffect(() => {
-        randomHeroGenerator(randomHeros())
+        // randomHeroGenerator(randomHeros())
     }, []);
 
     const randomHeroGenerator = (id) => {
-        const randomHeros = {}
-        allHeros.forEach(element => {
-            randomHeros[element] = axios.get(`https://superheroapi.com/api/4298272713525886/${id}`)
-        });
-        return randomHeros;
+        // const randomHeros = {}
+        // allHeros.forEach(element => {
+        //     randomHeros[element] = axios.get(`https://superheroapi.com/api/4298272713525886/${id}`)
+        // });
+        // return randomHeros;
     } 
     //     axios.get("https://akabab.github.io/superhero-api/api/all.json")
     //     .then(res => {
@@ -36,7 +41,7 @@ const SuggestHero = () => {
         {allHeros && allHeros.map((suggest) => {
         return (
         <Card key={suggest.id} style={{width: "18rem", backgroundColor: "#232425"}} className="suggest__card">
-            <Card.Img src={suggest.images.sm} className="suggest_image" />
+            <Card.Img src={suggest.image.url} className="suggest_image" />
         <Card.Body className="suggest__body">
             <Card.Title  style={{color: '#fff'}}>{suggest.name}</Card.Title>
             <Card.Text>
