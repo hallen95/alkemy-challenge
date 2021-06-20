@@ -9,8 +9,7 @@ de todos los campos de los heroes correspondientes al mismo tipo
 puedo hacer un objeto con un useState que guarde la suma en un objeto?  */
 
 const GeneralStats = () => {
-    const { totalStats } = useStatsContext()
-    console.log("totalstats", totalStats)
+    // const { totalStats } = useStatsContext()
 
         /* tendría que encontrar la manera dinámica de ingresar a cada héroe seleccionado 
         para luego recien poder ver sus stats 
@@ -24,7 +23,7 @@ const GeneralStats = () => {
             <Table striped bordered hover variant="dark">
                 <tbody>
                     <tr>
-                    <td>intelligence {totalStats.intelligence} </td>
+                    <td>intelligence </td>
                     <td>Strength</td>
                     <td>Speed</td>
                     <td>Weight</td>

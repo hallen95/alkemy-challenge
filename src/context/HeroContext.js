@@ -1,86 +1,125 @@
-import React, {createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export const HeroContext = createContext([])
+export const HeroContext = createContext([]);
 
-const useHeroContext = () => useContext(HeroContext)
+const useHeroContext = () => useContext(HeroContext);
 
 export const HeroProvider = ({ children }) => {
-    // este estado controla TODOS los heroes elegidos 
-    const [ selectedHero, setSelectedHero ] = useState([])
-    // este estado controla la CANTIDAD de heroes elegidos/disponibles
-    const [ heroContador, setHeroContador ] = useState(0)
-    // este estado controla los villanos 
-    const [ villian, setVillian ] = useState(0)
-    //este controla los héroes y ambos funcionan como contadores 
-    const [ hero, setHero ] = useState(0)
-    const MAXQUANTITY = 6;
+  const [selectedHero, setSelectedHero] = useState([]);
+  const [heroContador, setHeroContador] = useState(0);
+  const [villianCounter, setVillianCounter] = useState(0);
+  const [heroCounter, setHeroCounter] = useState(0);
 
-    const heroAdded = (data) => {
-        console.table("data",data)
-        // let hero = {
-        //     id: data.id,
-        //     name: data.name,
-        //     stats: data.powerstats,
-        //     image: data.images.sm || data.image.url,
-        //     alignment: data.biography.alignment
-        // }
-        if(selectedHero.length <= MAXQUANTITY) {
-            handleAlignment(data)} 
-        setHeroContador(heroContador => heroContador + 1)
+  /**************** MANIPULANDO DOM *****************/
+  useEffect(() => {
+    if (localStorage.getItem('mi-equipo')) {
+      let fullTeam = localStorage.getItem('mi-equipo');
+      fullTeam = JSON.parse(fullTeam);
+      setSelectedHero(fullTeam);
+
+      let heroBadStorage = localStorage.getItem('villians');
+      heroBadStorage = JSON.parse(heroBadStorage);
+      setVillianCounter(heroBadStorage);
+
+      let heroGoodStorage = localStorage.getItem('heros');
+      heroGoodStorage = JSON.parse(heroGoodStorage);
+      setHeroCounter(heroGoodStorage);
     }
-    /* primero tendríamos que tener el addHero, crear el objeto
-    despues viene el handleDuplicate(objeto, id) =>
-    ejecuta searchHeroId para que no se duplique, 
-    si esto devuelve una coincidencia entonces hay que avisar que 
-    ese heroe ya lo tiene y debe elegir otro con un alert.
-    sino lo tiene ejecuta setSelectedHero([...spread])
-    no vamos a hacer el quantity check porque solo puede haber 1
-    */ 
+    // if (localStorage.getItem('total-stats')) {
+    //     let total = localStorage.getItem('total-stats')
+    //     total = JSON.parse(total)
+    //     setTotalStats(total)
+    // }
+  }, []);
 
-    const handleDuplicate = (newHero) => {
-        if(searchHeroId(newHero.id) !== undefined) {
-            alert("ya tienes ese heroe!") 
-            return false
-        } else { 
-            return true
-        }
+  useEffect(() => {
+    localStorage.setItem('mi-equipo', JSON.stringify(selectedHero));
+    // localStorage.setItem('total-stats', JSON.stringify(totalStats))
+    localStorage.setItem('villians', JSON.stringify(villianCounter));
+    localStorage.setItem('heros', JSON.stringify(heroCounter));
+  }, [selectedHero, villianCounter, heroCounter]);
+
+  /**************** AGREGANDO HEROES *****************/
+  const addGood = (hero) => {
+    if (heroCounter === 3) {
+      alert('maximo de 3 héroes con orientacion buena alcanzado');
+    } else {
+      const heroGood = heroCounter + 1;
+      setHeroCounter(heroGood);
+      heroAdded(hero);
     }
+  };
 
-    const handleAlignment = ( newHero ) => {
-        if (handleDuplicate(newHero)) {
-            if(newHero.alignment === "good" && hero < 3){
-                setHero(hero => hero+1)
-                setSelectedHero([...selectedHero, newHero])
-                return true
-            } else if (newHero.alignment === "bad" && villian < 3) {
-                setVillian(villian => villian+1)
-                setSelectedHero([...selectedHero, newHero])
-                return true
-            } else {
-                alert("recuerda que tienes un máximo de 3 héroes por bando!")
-                return false
-            }
-        }
+  const addBad = (hero) => {
+    if (villianCounter === 3) {
+      alert('maximo de 3 héroes con orientacion buena alcanzado');
+    } else {
+      const heroBad = villianCounter + 1;
+      setVillianCounter(heroBad);
+      heroAdded(hero);
     }
-    
-    const searchHeroId = heroId => {
-        return selectedHero.find(hero => hero.id === heroId)
+  };
+
+  const heroAdded = (data) => {
+    let hero = {
+      id: data.id,
+      name: data.name,
+      stats: data.powerstats,
+      image: data.image.url,
+      alignment: data.biography.alignment,
+    };
+    if (searchHeroId(hero.id)) {
+      setSelectedHero([...selectedHero, hero]);
+    } else {
+      alert('ya tienes ese héroe');
     }
+  };
 
-    const deleteHero = hero => {
-        hero.alignment === "good" ? setHero(hero => hero-1) : setVillian(villian => villian-1)
-        // crea un nuevo array con todos menos el buscado
-        const filtered = selectedHero.filter(filterHeros => filterHeros.id !== hero.id)
-        setSelectedHero(filtered)
+  const searchHeroId = (heroId) => {
+    // devuelve el primer valor que coincida con el heroId o undefined
+    let duplicated = selectedHero.find((hero) => hero.id === heroId);
+    if (duplicated === undefined) {
+      return true;
     }
+    return false;
+  };
 
+  /**************** ELIMINANDO HEROES *****************/
+  const deleteGood = (hero) => {
+    setHeroCounter(heroCounter - 1);
+    deleteHero(hero);
+  };
 
-    return (
-        <HeroContext.Provider value={{ 
-            selectedHero, setSelectedHero, heroContador, 
-            setHeroContador, heroAdded, deleteHero }}>
-            {children}
-        </HeroContext.Provider>)
-}
+  const deleteBad = (hero) => {
+    setVillianCounter(villianCounter - 1);
+    deleteHero(hero);
+  };
+
+  const deleteHero = (hero) => {
+    // crea un nuevo array con todos menos el buscado
+    const filtered = selectedHero.filter(
+      (filterHeros) => filterHeros.id !== hero.id
+    );
+    setSelectedHero(filtered);
+  };
+
+  return (
+    <HeroContext.Provider
+      value={{
+        selectedHero,
+        setSelectedHero,
+        heroContador,
+        setHeroContador,
+        heroAdded,
+        addBad,
+        addGood,
+        deleteGood,
+        deleteBad,
+      }}
+    >
+      {children}
+    </HeroContext.Provider>
+  );
+};
 
 export default useHeroContext;

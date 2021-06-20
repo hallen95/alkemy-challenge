@@ -7,20 +7,21 @@ function App() {
   return (
   <Router>
     <HeroProvider>
-      <StatsProvider>
-        <NavBar />
+      {/* <StatsProvider> */}
         <Switch>
           <Route exact path="/search">
+            <NavBar />
             <SearchContainer />
           </Route>
-          <Route exact path="/signup">
+          <Route exact path="/">
             <LoginContainer/>
           </Route>
-          <Route path="/">
+          <Route path="/home">
+            <NavBar />
             <HomeContainer />
           </Route>
         </Switch>
-      </StatsProvider>
+      {/* </StatsProvider> */}
     </HeroProvider>
   </Router>)
 }

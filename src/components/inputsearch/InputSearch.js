@@ -31,18 +31,17 @@ const InputSearch = ({ searchResponse }) => {
                 .max(15, 'Must be 15 characters or less')
                 .required('Required')
             })}
-            onSubmit={async (values) => {
+            onSubmit={async values => {
                 try {
-                const heroresponse = await axios.get(`https://superheroapi.com/api/4298272713525886/search/${values.hero}`)
+                const heroresponse = await axios.get(`/4298272713525886/search/${values.hero}`)
                 searchResponse(heroresponse.data);
-            }
+                }
                 catch (error){
                     console.log("error", error.message);
                 }
             }}
-
         >
-        {( { isSubmitting }) => (
+        {
             <Form className="form__formik">
             <MyTextInput
                 className="form__input"
@@ -52,9 +51,9 @@ const InputSearch = ({ searchResponse }) => {
                 placeholder="Busque su héroe"
             />
 
-            <Button className="form__button" type="submit" disable={isSubmitting}>Submit</Button>
+            <Button className="form__button" type="submit">Submit</Button>
             </Form>
-        )}
+        }
         </Formik>)
 }
 

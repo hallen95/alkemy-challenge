@@ -1,14 +1,9 @@
-// import { useState, useEffect } from 'react'
+
 import { CardContainer, StatsContainer } from '../index'
 import './homecontainer.css'
 import { Container, Row, Col } from 'react-bootstrap'
 
 const HomeContainer = () => {
-    // const [ isHeroFull, setIsHeroFull ] = useState(false);
-
-
-    /* ahora necesito pensar una forma de hacer que el array de cards con máximo 6
-        pueda incluir heroes haciendo la petición. */
     return (
         <>
             <Container fluid className="home-container">
