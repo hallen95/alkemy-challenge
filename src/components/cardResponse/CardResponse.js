@@ -56,6 +56,8 @@ const CardResponse = ({ dataResponse }) => {
             stats={result.powerstats}
             name={result.name}
             image={result.image.url}
+            height={result.appearance.height}
+            weight={result.appearance.weight}
         >
         <Card.Img variant="top" src={result.image.url}/>
         <Card.Body>

@@ -6,78 +6,88 @@ const useStatsContext = () => useContext(StatsContext)
 
 export const StatsProvider = ({ children }) => {
     const { selectedHero } = useHeroContext()
-    const [ combat, setCombat ] = useState([])
-    const [ durability, setDurability ] = useState([])
-    const [ intelligence, setIntelligence ] = useState([])
-    const [ power, setPower ] = useState([])
-    const [ speed, setSpeed ] = useState([])
-    const [strength, setStrength ] = useState([])
+    const [ totalStats, setTotalStats ] = useState({})
 
-    const totalStats = {
-        combat: 0,
-        durability: 0, 
-        intelligence: 0,
-        power: 0,
-        strength: 0,
-        speed: 0
-     }
+    // const totalStats = {
+    //     combat: 0,
+    //     durability: 0, 
+    //     intelligence: 0,
+    //     power: 0,
+    //     strength: 0,
+    //     speed: 0
+    //  }
+    
+    const handleStats = (heroStats) =>  {
+      if (Object.keys(totalStats).length === 0) {
+        setTotalStats(heroStats);
+      } else {
+        const newCombat = parseInt(totalStats.combat) + parseInt(heroStats.combat);
+        const newDurability =
+          parseInt(totalStats.durability) + parseInt(heroStats.durability);
+        const newIntelligence =
+          parseInt(totalStats.intelligence) + parseInt(heroStats.intelligence);
+        const newPower = parseInt(totalStats.power) + parseInt(heroStats.power);
+        const newSpeed = parseInt(totalStats.speed) + parseInt(heroStats.speed);
+        const newStrength =
+          parseInt(totalStats.strength) + parseInt(heroStats.strength);
+        const newStats = {
+          combat: newCombat.toString(),
+          durability: newDurability.toString(),
+          intelligence: newIntelligence.toString(),
+          power: newPower.toString(),
+          speed: newSpeed.toString(),
+          strength: newStrength.toString(),
+        };
+        setTotalStats(newStats);
+      }
+    };
 
-    useEffect(() => {
-        const mockReducer = (value, valorDinamico) => {
-            console.log("value", value)
-            const reducer = (accumulator, currentValue) => accumulator + currentValue
-            const statReducer = (value) => {value.reduce(reducer); console.log("valuestatreducer", value)}
-            if(value.length)  totalStats.intelligence = statReducer(value)
-            console.log("totalstatdinamico", totalStats.valorDinamico)
-        }
-        // con esto tenemos el array con los valores que necesitamos.         
-        const mappingIntelligence = () => {
-            selectedHero.map((hero) => setIntelligence(
-                [...intelligence, parseInt(hero.stats.intelligence)]))
-                mockReducer(intelligence, totalStats.intelligence)
-        }
-        mappingIntelligence()
-        // la misma funcion para el combat 
-        const mappingCombat = () => {
-            selectedHero.map((hero) => setCombat(
-                [...combat, parseInt(hero.stats.combat)])
-            )
-        }
-        mappingCombat()
-        
-        const mappingPower = () => {
-            selectedHero.map((hero) => setPower(
-                [...power, parseInt(hero.stats.power)])
-            )
-        }
-        mappingPower()
+    const deleteStats = (heroStats) => {
+      const newCombat = parseInt(totalStats.combat) - parseInt(heroStats.stats.combat)
+      const newDurability = parseInt(totalStats.durability) - parseInt(heroStats.stats.durability)
+      const newIntelligence = parseInt(totalStats.intelligence) - parseInt(heroStats.stats.intelligence)
+      const newPower = parseInt(totalStats.power) - parseInt(heroStats.stats.power)
+      const newSpeed = parseInt(totalStats.speed) - parseInt(heroStats.stats.speed)
+      const newStrength = parseInt(totalStats.strength) - parseInt(heroStats.stats.strength)
+      const newStats = {
+          combat: newCombat.toString(),
+          durability: newDurability.toString(),
+          intelligence: newIntelligence.toString(),
+          power: newPower.toString(),
+          speed: newSpeed.toString(),
+          strength: newStrength.toString()
+      }
+      setTotalStats(newStats)
+  }
+  
+  const [ peso, setPeso ] = useState(0)
+  const [ altura, setAltura ] = useState(0)
 
-        const mappingDurability = () => {
-            selectedHero.map((hero) => setDurability(
-                [...durability, parseInt(hero.stats.durability)])
-            )
-        }
-        mappingDurability()
-
-        const mappingStrength = () => {
-            selectedHero.map((hero) => setStrength(
-                [...strength, parseInt(hero.stats.strength)])
-            )
-        }
-        mappingStrength()
-
-        const mappingSpeed = () => {
-            selectedHero.map((hero) => setSpeed(
-                [...speed, parseInt(hero.stats.speed)])
-            )
-        }
-        mappingSpeed()
-        
-    }, [selectedHero])
-    // mockReducer()
+  const prom = (selectedHero) => {
+      let pesoTotal = 0
+      let altTotal = 0
+      const separador = " "
+      const promedioPeso = selectedHero.map((hero) => {
+          const peso = hero.weight[1].split(separador)[0]
+          pesoTotal = pesoTotal + parseInt(peso)
+          return pesoTotal
+      })
+      const promedioAlt = selectedHero.map((hero) => {
+          const alt = hero.height[1].split(separador)[0]
+          altTotal = altTotal + parseInt(alt)
+          return altTotal
+      })
+      const resPeso = Math.trunc(promedioPeso.find(peso => peso === pesoTotal) / selectedHero.length)
+      const resAlt = Math.trunc(promedioAlt.find(alt => alt === altTotal) / selectedHero.length)
+      const promedios = [resPeso.toString(), resAlt.toString()]
+      setPeso(promedios[0])
+      setAltura(promedios[1])
+      // alt = promedios[1]
+      // peso = promedios[0]
+  }
 
     return (
-    <StatsContext.Provider value={{ intelligence, totalStats }}>
+    <StatsContext.Provider value={{ handleStats, totalStats, deleteStats, prom, altura, peso }}>
         {children}
     </StatsContext.Provider>)
 }

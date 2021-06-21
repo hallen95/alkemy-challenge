@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import useStatsContext from './StatsContext';
 
 export const HeroContext = createContext([]);
 
@@ -9,6 +10,7 @@ export const HeroProvider = ({ children }) => {
   const [heroContador, setHeroContador] = useState(0);
   const [villianCounter, setVillianCounter] = useState(0);
   const [heroCounter, setHeroCounter] = useState(0);
+  const { handleStats, deleteStats, prom } = useStatsContext()
 
   /**************** MANIPULANDO DOM *****************/
   useEffect(() => {
@@ -39,6 +41,10 @@ export const HeroProvider = ({ children }) => {
     localStorage.setItem('heros', JSON.stringify(heroCounter));
   }, [selectedHero, villianCounter, heroCounter]);
 
+  useEffect(() => {
+    // handleStats(selectedHero);
+    selectedHero.length > 0 ? console.log(selectedHero.map(hero => console.log(hero.appearence.weight))) : console.log("not yet")
+  },[])
   /**************** AGREGANDO HEROES *****************/
   const addGood = (hero) => {
     if (heroCounter === 3) {
@@ -67,9 +73,13 @@ export const HeroProvider = ({ children }) => {
       stats: data.powerstats,
       image: data.image.url,
       alignment: data.biography.alignment,
+      weight: data.appearance.weight,
+      height: data.appearance.height,
     };
     if (searchHeroId(hero.id)) {
+      handleStats(hero.stats)
       setSelectedHero([...selectedHero, hero]);
+      prom(selectedHero)
     } else {
       alert('ya tienes ese héroe');
     }
@@ -87,12 +97,14 @@ export const HeroProvider = ({ children }) => {
   /**************** ELIMINANDO HEROES *****************/
   const deleteGood = (hero) => {
     setHeroCounter(heroCounter - 1);
-    deleteHero(hero);
+    deleteHero(hero)
+    deleteStats(hero)
   };
 
   const deleteBad = (hero) => {
     setVillianCounter(villianCounter - 1);
-    deleteHero(hero);
+    deleteHero(hero)
+    deleteStats(hero)
   };
 
   const deleteHero = (hero) => {
@@ -100,7 +112,8 @@ export const HeroProvider = ({ children }) => {
     const filtered = selectedHero.filter(
       (filterHeros) => filterHeros.id !== hero.id
     );
-    setSelectedHero(filtered);
+    setSelectedHero(filtered)
+    prom(selectedHero)
   };
 
   return (

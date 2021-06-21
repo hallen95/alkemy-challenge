@@ -6,8 +6,8 @@ import { StatsProvider } from './context/StatsContext'
 function App() {
   return (
   <Router>
-    <HeroProvider>
-      {/* <StatsProvider> */}
+    <StatsProvider>
+      <HeroProvider>  
         <Switch>
           <Route exact path="/search">
             <NavBar />
@@ -21,8 +21,8 @@ function App() {
             <HomeContainer />
           </Route>
         </Switch>
-      {/* </StatsProvider> */}
-    </HeroProvider>
+      </HeroProvider>
+    </StatsProvider>
   </Router>)
 }
 
