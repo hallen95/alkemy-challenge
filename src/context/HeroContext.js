@@ -27,29 +27,26 @@ export const HeroProvider = ({ children }) => {
       heroGoodStorage = JSON.parse(heroGoodStorage);
       setHeroCounter(heroGoodStorage);
     }
-    // if (localStorage.getItem('total-stats')) {
-    //     let total = localStorage.getItem('total-stats')
-    //     total = JSON.parse(total)
-    //     setTotalStats(total)
-    // }
   }, []);
 
   useEffect(() => {
     localStorage.setItem('mi-equipo', JSON.stringify(selectedHero));
-    // localStorage.setItem('total-stats', JSON.stringify(totalStats))
     localStorage.setItem('villians', JSON.stringify(villianCounter));
     localStorage.setItem('heros', JSON.stringify(heroCounter));
   }, [selectedHero, villianCounter, heroCounter]);
 
   useEffect(() => {
-    // handleStats(selectedHero);
-    selectedHero.length > 0 ? console.log(selectedHero.map(hero => console.log(hero.appearence.weight))) : console.log("not yet")
-  },[])
+    selectedHero.length >= 0 && prom(selectedHero)
+  },[selectedHero])
+
   /**************** AGREGANDO HEROES *****************/
   const addGood = (hero) => {
     if (heroCounter === 3) {
       alert('maximo de 3 héroes con orientacion buena alcanzado');
-    } else {
+    } else if (!searchHeroId(hero.id)){
+      alert('ya tienes ese héroe')
+    }
+      else {
       const heroGood = heroCounter + 1;
       setHeroCounter(heroGood);
       heroAdded(hero);
@@ -59,7 +56,10 @@ export const HeroProvider = ({ children }) => {
   const addBad = (hero) => {
     if (villianCounter === 3) {
       alert('maximo de 3 héroes con orientacion buena alcanzado');
-    } else {
+    } else if (!searchHeroId(hero.id)){
+      alert('ya tienes ese héroe')
+    }
+      else {
       const heroBad = villianCounter + 1;
       setVillianCounter(heroBad);
       heroAdded(hero);
@@ -76,13 +76,12 @@ export const HeroProvider = ({ children }) => {
       weight: data.appearance.weight,
       height: data.appearance.height,
     };
-    if (searchHeroId(hero.id)) {
-      handleStats(hero.stats)
+    // if (searchHeroId(hero.id)) {
       setSelectedHero([...selectedHero, hero]);
-      prom(selectedHero)
-    } else {
-      alert('ya tienes ese héroe');
-    }
+      handleStats(hero.stats)
+    // } else {
+    //   alert('ya tienes ese héroe');
+    // }
   };
 
   const searchHeroId = (heroId) => {
@@ -90,8 +89,10 @@ export const HeroProvider = ({ children }) => {
     let duplicated = selectedHero.find((hero) => hero.id === heroId);
     if (duplicated === undefined) {
       return true;
+    } else {
+      // alert('ya tienes ese heroe!')
+      return false;
     }
-    return false;
   };
 
   /**************** ELIMINANDO HEROES *****************/
@@ -113,7 +114,6 @@ export const HeroProvider = ({ children }) => {
       (filterHeros) => filterHeros.id !== hero.id
     );
     setSelectedHero(filtered)
-    prom(selectedHero)
   };
 
   return (

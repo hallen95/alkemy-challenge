@@ -1,14 +1,18 @@
 import { useState } from 'react';
-import { Card, Button, Modal } from 'react-bootstrap';
+import { Card, Button, Modal, Container } from 'react-bootstrap';
 import useHeroContext from '../../context/HeroContext';
+import useStatsContext from '../../context/StatsContext';
+
 const CardItem = ({ hero }) => {
-  const [show, setShow] = useState(false);
+  const [ show, setShow ] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { deleteGood, deleteBad } = useHeroContext();
+  const { altura, peso } = useStatsContext;
 
   return (
-    <Card style={{ width: '17rem', backgroundColor: '#232425' }}>
+    // <Container fluid>
+    <Card className="d-flex flex-row flex-md-column text-center align-items-center" style={{ backgroundColor: '#232425' }}>
       <Card.Img variant="top" src={hero.image} />
       <Card.Body>
         <Card.Title style={{ color: '#fff' }}>{hero.name}</Card.Title>
@@ -29,13 +33,13 @@ const CardItem = ({ hero }) => {
                   <td>intelligence {hero.stats.intelligence} </td>
                   <td>Strength {hero.stats.strength}</td>
                   <td>Speed {hero.stats.speed}</td>
-                  <td>Weight </td>
+                  <td> {hero.weight}</td>
                 </tr>
                 <tr>
                   <td>Durability {hero.stats.durability}</td>
                   <td>Combat {hero.stats.combat}</td>
                   <td>Power {hero.stats.power}</td>
-                  <td>Height</td>
+                  <td>{hero.height}</td>
                 </tr>
               </tbody>
             </table>
@@ -62,6 +66,7 @@ const CardItem = ({ hero }) => {
         </Button>
       </Card.Body>
     </Card>
+    // </Container>
   );
 };
 

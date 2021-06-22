@@ -9,13 +9,16 @@ de todos los campos de los heroes correspondientes al mismo tipo
 puedo hacer un objeto con un useState que guarde la suma en un objeto?  */
 
 const GeneralStats = () => {
-    const { totalStats, altura, peso } = useStatsContext()
-    console.log("totalintel", totalStats.intelligence)
+    const { totalStats, altura, peso, maxStats } = useStatsContext()
 
         /* tendría que encontrar la manera dinámica de ingresar a cada héroe seleccionado 
         para luego recien poder ver sus stats 
         este useEffect va a estar encargado de actualizar constantemente esos valores */ 
         // console.log("inteligence", parseInt(selectedHero[0].stats.intelligence))
+
+    useEffect(() => {
+        maxStats(totalStats)
+    }, [totalStats])
 
     return (
         <Container>
@@ -36,7 +39,7 @@ const GeneralStats = () => {
                     <td>Height {altura} cm</td>
                     </tr>
                     <tr>
-                    <td colSpan="4">Main category</td>
+                    <td colSpan="4">Main category {maxStats(totalStats)}</td>
                     </tr>
                 </tbody>
                 </Table>
