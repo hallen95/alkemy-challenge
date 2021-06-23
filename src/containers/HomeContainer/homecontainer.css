@@ -8,10 +8,26 @@
 }
 
 .home-container {
-    background-color: rgb(36, 36, 36);
+    background-color: rgb(80, 80, 80);
     height: 100vh;
     width: 100vw;
 }
+
+.home__container-card,
+.home__container-stats {
+    background-color: rgb(80, 80, 80);
+}
+.home__text__row {
+    /* poner un lindo border */ 
+}
+
+h1, h2 {
+    padding-top: 30px;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px black;
+    font-weight:bolder;
+}
+
 
 .home-container__cards {
     /* padding-top: 40px;

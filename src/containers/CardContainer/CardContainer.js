@@ -7,7 +7,7 @@ const CardContainer = () => {
   return (
     <>
     {selectedHero.map((hero) => 
-          <Col className="col-5">
+          <Col className="col-8">
             <CardItem key={hero.id} hero={hero} className="card-item" />
          </Col>
           )}

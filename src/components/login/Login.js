@@ -29,7 +29,7 @@ const SignupForm = () => {
     <Container fluid="md">
       <Row>
         <Col>
-          <header className="login-image">
+          {/* <header className="login-image"> */}
             <Formik
               initialValues={{
                 email: '',
@@ -77,7 +77,7 @@ const SignupForm = () => {
                 </button>
               </Form>
             </Formik>
-          </header>
+          {/* </header> */}
         </Col>
       </Row>
     </Container>
