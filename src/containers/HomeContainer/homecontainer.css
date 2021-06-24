@@ -4,6 +4,7 @@
     font-weight: 700;
     padding-top: 70px;
     letter-spacing: 7px;
+    text-shadow: 1px 1px 2px black;
     color: #fff;
 }
 
@@ -13,8 +14,8 @@
     width: 100vw;
 }
 
-.home-no-hero {
-    background-color: white;
+.home-container-no-hero {
+    color: white;
     border-radius: 5px;
 }
 
@@ -26,12 +27,8 @@
     /* poner un lindo border */ 
 }
 
-h1, h2 {
-    padding-top: 30px;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 2px black;
-    font-weight:bolder;
-}
+
+
 
 
 .home-container__cards {

@@ -14,9 +14,6 @@ const CardResponse = ({ dataResponse }) => {
     const [ isAdded, setAdded ] = useState(false)
 
     useEffect(() => {
-        console.log("selectedhero", dataResponse)
-        // handleDuplicate(dataResponse.id) hay que pasar el id de cada card
-        // pero data response es un objeto.    
         dataResponse.results.forEach(element => handleDuplicate(element.id))
     }, [dataResponse])
 
@@ -62,10 +59,6 @@ const CardResponse = ({ dataResponse }) => {
         <Card.Img variant="top" src={result.image.url}/>
         <Card.Body>
             <Card.Title>{result.name}</Card.Title>
-            <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-            </Card.Text>
             {
                 isAdded === true
                 ? <p>Añadido!</p>

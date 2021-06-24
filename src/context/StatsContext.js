@@ -110,9 +110,9 @@ export const StatsProvider = ({ children }) => {
     let maxPower = [];
 
     if (totalStats.length === 0) {
-      return 'select heros to know your stats';
+      return 'Selecciona tu equipo para saber sus estadísticas!';
     } else if (totalStats.combat === '0') {
-      return 'no category has been declared yet';
+      return 'Ninguna categoría ha sido declarada aún';
     } else {
       maxPower = Object.entries(totalStats).filter((entry) => {
         if (parseInt(entry[1]) > mainCategory) {

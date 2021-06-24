@@ -85,7 +85,7 @@ const GeneralStats = () => {
             <tr>
               <td colSpan="4">
                 <div className="d-flex justify-content-center">
-                  <p><strong>Main category:</strong>  {maxStats(totalStats)}</p>
+                  <p><strong>Categoria principal:</strong>  {maxStats(totalStats)}</p>
                 </div>
               </td>
             </tr>

@@ -1,8 +1,9 @@
 import { CardContainer, StatsContainer } from '../index';
 import './homecontainer.css';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import useHeroContext from '../../context/HeroContext';
-import { AiFillPlusCircle } from 'react-icons/ai'
+
 
 const HomeContainer = () => {
   const { selectedHero } = useHeroContext();
@@ -13,12 +14,16 @@ const HomeContainer = () => {
         <h1>Estos son tus heroes</h1>
       </Row>
       {selectedHero.length === 0 ? (
-        <Col className="d-flex justify-content-center ">
-        <div className="col-6 d-flex flex-column align-items-center home-no-hero">
-        <p className="col-6 text-center"> No tienes héroes aun! </p>
-        <AiFillPlusCircle />                
-        </div>
-        </Col>
+        <Row className="d-flex justify-content-center ">
+        {/* <div className="col-6 d-flex flex-column align-items-center home-no-hero"> */}
+        <span className="text-center home-container-no-hero">¡No tienes héroes aun!</span>
+        <Link className="col-4 col-sm-2 my-2 text-center" to="/search">
+        <Button variant="primary"> 
+          Click aqui &rarr;
+        </Button>
+        </Link>  
+        {/* </div> */}
+        </Row>
       ) : (
         <Row
           sm={2}
