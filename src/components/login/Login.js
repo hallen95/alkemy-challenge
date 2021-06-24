@@ -4,6 +4,7 @@ import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
+import loginImage from '../../images/login-image.jpg'
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -26,10 +27,16 @@ const SignupForm = () => {
   }, []);
 
   return (
-    <Container fluid="md">
+    <Container fluid>
       <Row>
-        <Col>
-          {/* <header className="login-image"> */}
+        <Col className="d-none d-sm-block p-0" >
+            <div className="login-sm-header d-flex justify-content-center align-items-center">
+            <h1 className="text-center login-sm-title">Alkemy Challenge React</h1>
+            </div>
+        </Col>
+        <Col className="p-0">
+          <div className="login-form-container">
+          <span className="login-welcome">Bienvenidos a mi desafio!</span>
             <Formik
               initialValues={{
                 email: '',
@@ -64,6 +71,7 @@ const SignupForm = () => {
                   placeholder="challenge@alkemy.org"
                 />
 
+
                 <MyTextInput
                   className="login-form_input"
                   label="Password"
@@ -72,12 +80,12 @@ const SignupForm = () => {
                   placeholder="react"
                 />
 
-                <button className="login-form_button" type="submit">
-                  Submit
+                <button className="btn login-form_button" type="submit">
+                  Entrar!
                 </button>
               </Form>
             </Formik>
-          {/* </header> */}
+          </div>
         </Col>
       </Row>
     </Container>

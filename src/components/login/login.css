@@ -1,35 +1,63 @@
- /* Typography
-  ––––––––––––––––––––––––––––––––– */
-.login-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../../herohero.png);
-  background-size: cover;
-  background-position: center;
+.login-form-container {
+  background: linear-gradient(0.25turn, #C04848, #480048);
+  /* background: linear-gradient(0.25turn, #2c5b6e, #ccd6c3, #f6673c); */
+  /* border-top: 5px solid #ebf8e1;
+  border-bottom: 5px solid #ebf8e1; */
+  border: 2px solid #1d1d1d;
   height: 100vh;
-  background-attachment: fixed;
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.login-welcome {
+  font-size: 30px;
+  font-weight: 500;
+  color: #FFEDBC;
+  text-shadow: 3px 3px 3px black;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
 }
 
-.login-form input {
-
+.login-form_input {
+  border-radius: 5px;
 }
 
 .login-form label {
   margin-top: 2rem;
-  color: white;
+  color: #FFEDBC;   
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-.error { color: rgb(216, 0, 0); }
+.error { color: rgb(255, 255, 255); }
 
 .login-form button {
   margin-top: 2rem; 
   background-color: #1d1d1d;
   color: white;
+}
+
+/*********************************/
+/****IMAGE SM SCREEN*************/
+
+.login-sm-header {
+  background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../images/login-image.jpg);
+  /* border-top: 5px solid #3f87a6;
+  border-bottom: 5px solid #3f87a6; */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+.login-sm-title {
+  color: #FFEDBC;
+  text-shadow: 3px 3px 3px black;
+  text-transform: uppercase;
 }

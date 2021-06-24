@@ -13,6 +13,11 @@
     width: 100vw;
 }
 
+.home-no-hero {
+    background-color: white;
+    border-radius: 5px;
+}
+
 .home__container-card,
 .home__container-stats {
     background-color: rgb(80, 80, 80);

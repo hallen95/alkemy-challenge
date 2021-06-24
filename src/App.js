@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './app.css';
 import { LoginContainer, HomeContainer, SearchContainer } from './containers';
+import { Container } from 'react-bootstrap'
 import { NavBar } from './components';
 import { HeroProvider } from './context/HeroContext';
 import { StatsProvider } from './context/StatsContext';
 function App() {
   return (
-    <div className="app__style">
+    <Container fluid className="app__style">
       <Router>
         <StatsProvider>
           <HeroProvider>
@@ -26,7 +27,7 @@ function App() {
           </HeroProvider>
         </StatsProvider>
       </Router>
-    </div>
+    </Container>
   );
 }
 
