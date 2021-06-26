@@ -4,7 +4,6 @@ import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
-import loginImage from '../../images/login-image.jpg'
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);

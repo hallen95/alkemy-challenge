@@ -10,10 +10,3 @@
 .form__label{
     display: none;
 }
-
-@media(max-width: 600px) {
-    .form__input {
-    margin-left: 0;
-    }
-
-}

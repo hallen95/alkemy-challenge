@@ -16,7 +16,7 @@ const NavBar = () => {
       <Nav className="navbar__menu">
         <Link to="/search" className="navbar__link">
           <Nav.Link href="#searching">Buscar Heroes</Nav.Link>
-        </Link>       
+        </Link>
         <Nav.Link
           className="navbar__link"
           onClick={() => handleLogout()}

@@ -10,7 +10,8 @@ export const HeroProvider = ({ children }) => {
   const [heroContador, setHeroContador] = useState(0);
   const [villianCounter, setVillianCounter] = useState(0);
   const [heroCounter, setHeroCounter] = useState(0);
-  const { handleStats, deleteStats, prom } = useStatsContext()
+  const { handleStats, deleteStats, handleAverage } = useStatsContext()
+  const [ isLoading, setIsLoading ] = useState(false)
 
   /**************** MANIPULANDO DOM *****************/
   useEffect(() => {
@@ -36,7 +37,7 @@ export const HeroProvider = ({ children }) => {
   }, [selectedHero, villianCounter, heroCounter]);
 
   useEffect(() => {
-    selectedHero.length >= 0 && prom(selectedHero)
+    selectedHero.length >= 0 && handleAverage(selectedHero)
   },[selectedHero])
 
   /**************** AGREGANDO HEROES *****************/
@@ -76,12 +77,8 @@ export const HeroProvider = ({ children }) => {
       weight: data.appearance.weight,
       height: data.appearance.height,
     };
-    // if (searchHeroId(hero.id)) {
       setSelectedHero([...selectedHero, hero]);
       handleStats(hero.stats)
-    // } else {
-    //   alert('ya tienes ese héroe');
-    // }
   };
 
   const searchHeroId = (heroId) => {
@@ -90,7 +87,6 @@ export const HeroProvider = ({ children }) => {
     if (duplicated === undefined) {
       return true;
     } else {
-      // alert('ya tienes ese heroe!')
       return false;
     }
   };
@@ -128,6 +124,8 @@ export const HeroProvider = ({ children }) => {
         addGood,
         deleteGood,
         deleteBad,
+        setIsLoading,
+        isLoading
       }}
     >
       {children}

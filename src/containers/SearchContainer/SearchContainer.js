@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './searchcontainer.css';
 import { InputSearch, CardResponse } from '../../components';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
+import useHeroContext from '../../context/HeroContext';
 
 const SearchContainer = () => {
   const [dataResponse, setDataResponse] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(false)
+  const { isLoading } = useHeroContext();
+
   const searchResponse = (value) => {
     setDataResponse(value);
   };
@@ -17,7 +19,7 @@ const SearchContainer = () => {
       </Row>
       <Row className="search__row search__row-input">
         <Col className="col-10 col-md-8 col-lg-6">
-          <InputSearch searchResponse={searchResponse} />{' '}
+          <InputSearch searchResponse={setDataResponse} />{' '}
         </Col>
       </Row>
       <Row className="search__row">
@@ -29,15 +31,16 @@ const SearchContainer = () => {
         </Col>
       </Row>
       <Row className="search__row">
-        {dataResponse.response === 'success' && (
-
+        {dataResponse.response === 'success' ? (
           <CardResponse dataResponse={dataResponse} />
-
-        ) 
-          // <Spinner animation="border" role="status">
-          //   <span className="sr-only">Loading...</span>
-          // </Spinner>
-        }
+        ) : isLoading ? (
+          <Spinner
+            animation="grow"
+            role="status"
+            animation="border"
+            style={{ width: '3rem', height: '3rem' }}
+          />
+        ) : null}
       </Row>
     </Container>
   );

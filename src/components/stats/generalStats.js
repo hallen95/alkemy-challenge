@@ -1,6 +1,5 @@
-import { bigIntLiteral } from '@babel/types';
-import { useEffect, useState } from 'react';
-import { Jumbotron, Table, Container, Row, Col } from 'react-bootstrap';
+import { useEffect} from 'react';
+import { Jumbotron, Table, Col } from 'react-bootstrap';
 import useStatsContext from '../../context/StatsContext';
 
 import intelligence from '../../images/intelligence.png';
@@ -30,13 +29,13 @@ const GeneralStats = () => {
                   <span className="">
                     intelligence {totalStats.intelligence}
                   </span>
-                  <img src={intelligence} alt="intelligence" />{' '}
+                  <img src={intelligence} alt="intelligence" />
                 </div>
               </td>
               <td className="">
                 <div className="d-flex justify-content-around">
                   <span className="">Strength {totalStats.strength}</span>
-                  <img src={strength} alt="strength" />{' '}
+                  <img src={strength} alt="strength" />
                 </div>
               </td>
             </tr>
@@ -44,13 +43,13 @@ const GeneralStats = () => {
               <td>
                 <div className="d-flex justify-content-around">
                   <span>Speed {totalStats.speed}</span>
-                  <img src={speed} alt="speed" />{' '}
+                  <img src={speed} alt="speed" />
                 </div>
               </td>
-                <td>
+              <td>
                 <div className="d-flex justify-content-around">
                   <span>Power {totalStats.power}</span>
-                  <img src={power} alt="power" />{' '}
+                  <img src={power} alt="power" />
                 </div>
               </td>
             </tr>
@@ -58,13 +57,13 @@ const GeneralStats = () => {
               <td>
                 <div className="d-flex justify-content-around">
                   <span>Durability {totalStats.durability}</span>
-                  <img src={durability} alt="durability" />{' '}
+                  <img src={durability} alt="durability" />
                 </div>
               </td>
               <td>
                 <div className="d-flex justify-content-around">
                   <span>Combat {totalStats.combat}</span>
-                  <img src={combat} alt="combat" />{' '}
+                  <img src={combat} alt="combat" />
                 </div>
               </td>
             </tr>
@@ -85,7 +84,9 @@ const GeneralStats = () => {
             <tr>
               <td colSpan="4">
                 <div className="d-flex justify-content-center">
-                  <p><strong>Categoria principal:</strong>  {maxStats(totalStats)}</p>
+                  <p>
+                    <strong>Categoria principal:</strong> {maxStats(totalStats)}
+                  </p>
                 </div>
               </td>
             </tr>

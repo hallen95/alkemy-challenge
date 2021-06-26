@@ -1,9 +1,7 @@
-import { Login } from '../components/'
+import { Login } from '../components/';
 
 const LoginContainer = () => {
-  return (
-    <Login />
-  )
-}
+  return <Login />;
+};
 
 export default LoginContainer;

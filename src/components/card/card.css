@@ -1,28 +1,24 @@
- /* #232425 */
-.card__container {
- /* // todo el contenedor  */
-}
-
 .card__bt-bad,
 .card__bt-good {
     border-radius: 40px 40px 40px 40px;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 .card__bt-bad {
-    background-color: #EA2027;  
+    background-color: #c0392b;  
 }
 
 .card__bt-good {
-    background-color: #009432;
+    background-color: #27ae60;
     border:none;
 }
 
 
 .card__bt-title {
+    font-weight: 500;
     color: #f1f1f1;
     background-color: rgb(80, 80, 80);
     border-radius: 5px;
-    padding: 3px 0;
+    /* padding: 3px 10px; */
 }
 
 .card__bt-body {
@@ -32,15 +28,6 @@
 .card__bt-body-img {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-
-.card__bt-text {
-
-}
-
-.card__bt-btn {
-    
-}
-
 
 
 @media (max-width:576px ){
@@ -53,7 +40,4 @@
         position: absolute;
         top: 300px;
     }
-}
-.card__image {
-
 }

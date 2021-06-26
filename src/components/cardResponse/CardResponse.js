@@ -1,73 +1,56 @@
-/* para la logica de los botones que necesitamos? 
-un array de objetos donde estén guardados los heroes 
-una funcion para validar si son heroes o villanos */ 
-import { useState, useEffect } from 'react'
-import { AddHeroButton } from '../index'
-import { Card, Button } from 'react-bootstrap'
-import  useHeroContext  from '../../context/HeroContext'
-
-/* este boton va a guardar en setHero la info del heroe clickado 
-necesitamos otro estado global para el stock de heroes seleccionados  */ 
+import { AddHeroButton } from '../index';
+import { Card, Col, Spinner } from 'react-bootstrap';
+import useHeroContext from '../../context/HeroContext';
 
 const CardResponse = ({ dataResponse }) => {
-    const { heroAdded, addGood, addBad, selectedHero } = useHeroContext()
-    const [ isAdded, setAdded ] = useState(false)
+  const { addGood, addBad, selectedHero, isLoading } = useHeroContext();
 
-    useEffect(() => {
-        dataResponse.results.forEach(element => handleDuplicate(element.id))
-    }, [dataResponse])
+  const handleTeam = (result) => {
+    return selectedHero.length === 6 ? (
+      <label className="btn-light btn w-100 fw-bold">Máximo alcanzado</label>
+    ) : (
+      <AddHeroButton
+        id={result.id}
+        addGood={() => addGood(result)}
+        addBad={() => addBad(result)}
+        alignment={result.biography.alignment}
+        stats={result.powerstats}
+      />
+    );
+  };
 
-        const handleDuplicate = id => {
-        const existId = selectedHero.find(hero => hero.id === id)
-        if (existId !== undefined) {
-            console.log("repetido")
-            setAdded(true)
-        }
-        else {
-            console.log("disponible")
-            setAdded(false)
-        }
-    }
-
-    const handleTeam = result => {
-        return selectedHero.length === 6 
-        ? <label style={{backgroundColor:"white"}}>Máximo alcanzado</label>
-        : <AddHeroButton 
-            addGood={() => addGood(result)}
-            addBad={() => addBad(result)}
-            alignment={result.biography.alignment}
-            stats={result.powerstats}
-          />
-    }
-    
-    return(
+  return (
     <>
-        {dataResponse.results.map((result) => {
-        return (
-        <Card  
-            key={result.id} 
-            style={{ width: '17rem', backgroundColor: "#232425", color: "#e3e3e3" }} 
-            addGood={() => addGood(result)}
-            addBad={() => addBad(result)}
-            alignment={result.biography.alignment}
-            stats={result.powerstats}
-            name={result.name}
-            image={result.image.url}
-            height={result.appearance.height}
-            weight={result.appearance.weight}
-        >
-        <Card.Img variant="top" src={result.image.url}/>
-        <Card.Body>
-            <Card.Title>{result.name}</Card.Title>
-            {
-                isAdded === true
-                ? <p>Añadido!</p>
-                : handleTeam(result)
-            }
-        </Card.Body>
-        </Card>) 
-        })}
-    </>)
-}
+      {!isLoading ? (
+        dataResponse.results.map((result) => {
+          return (
+            <Col className="col-6 col-sm-4 col-lg-3">
+              <Card
+                style={{
+                  width: '',
+                  backgroundColor: '#232425',
+                  color: '#e3e3e3',
+                  boxShadow: '1px 1px 3px 1px',
+                }}
+              >
+                <Card.Img variant="top" src={result.image.url} />
+                <Card.Body>
+                  <Card.Title>{result.name}</Card.Title>
+                  {handleTeam(result)}
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })
+      ) : (
+        <Spinner
+          animation="border"
+          style={{ width: '3rem', height: '3rem' }}
+          role="status"
+        />
+      )}
+    </>
+  );
+};
 
 export default CardResponse;

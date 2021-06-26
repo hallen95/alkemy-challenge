@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import useHeroContext from '../../context/HeroContext';
 
-
 const HomeContainer = () => {
   const { selectedHero } = useHeroContext();
 
@@ -15,14 +14,12 @@ const HomeContainer = () => {
       </Row>
       {selectedHero.length === 0 ? (
         <Row className="d-flex justify-content-center ">
-        {/* <div className="col-6 d-flex flex-column align-items-center home-no-hero"> */}
-        <span className="text-center home-container-no-hero">¡No tienes héroes aun!</span>
-        <Link className="col-4 col-sm-2 my-2 text-center" to="/search">
-        <Button variant="primary"> 
-          Click aqui &rarr;
-        </Button>
-        </Link>  
-        {/* </div> */}
+          <span className="text-center home-container-no-hero">
+            ¡No tienes héroes aun!
+          </span>
+          <Link className="col-4 col-sm-2 my-2 text-center" to="/search">
+            <Button variant="primary">Click aqui &rarr;</Button>
+          </Link>
         </Row>
       ) : (
         <Row

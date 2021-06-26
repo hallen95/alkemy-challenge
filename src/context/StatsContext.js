@@ -5,8 +5,9 @@ export const StatsContext = createContext([]);
 const useStatsContext = () => useContext(StatsContext);
 
 export const StatsProvider = ({ children }) => {
-  const { selectedHero } = useHeroContext();
   const [totalStats, setTotalStats] = useState([]);
+  const [peso, setPeso] = useState(0);
+  const [altura, setAltura] = useState(0);
 
   useEffect(() => {
     if (localStorage.getItem('total-stats')) {
@@ -24,23 +25,23 @@ export const StatsProvider = ({ children }) => {
     if (Object.keys(totalStats).length === 0) {
       setTotalStats(heroStats);
     } else {
-      const newCombat =
+      const handleCombat =
         parseInt(totalStats.combat) + parseInt(heroStats.combat);
-      const newDurability =
+      const handleDurability =
         parseInt(totalStats.durability) + parseInt(heroStats.durability);
-      const newIntelligence =
+      const handleIntelligence =
         parseInt(totalStats.intelligence) + parseInt(heroStats.intelligence);
-      const newPower = parseInt(totalStats.power) + parseInt(heroStats.power);
-      const newSpeed = parseInt(totalStats.speed) + parseInt(heroStats.speed);
-      const newStrength =
+      const handlePower = parseInt(totalStats.power) + parseInt(heroStats.power);
+      const handleSpeed = parseInt(totalStats.speed) + parseInt(heroStats.speed);
+      const handleStrength =
         parseInt(totalStats.strength) + parseInt(heroStats.strength);
       const newStats = {
-        combat: newCombat.toString(),
-        durability: newDurability.toString(),
-        intelligence: newIntelligence.toString(),
-        power: newPower.toString(),
-        speed: newSpeed.toString(),
-        strength: newStrength.toString(),
+        combat: handleCombat.toString(),
+        durability: handleDurability.toString(),
+        intelligence: handleIntelligence.toString(),
+        power: handlePower.toString(),
+        speed: handleSpeed.toString(),
+        strength: handleStrength.toString(),
       };
       setTotalStats(newStats);
     }
@@ -71,10 +72,7 @@ export const StatsProvider = ({ children }) => {
     setTotalStats(newStats);
   };
 
-  const [peso, setPeso] = useState(0);
-  const [altura, setAltura] = useState(0);
-
-  const prom = (selectedHero) => {
+  const handleAverage = (selectedHero) => {
     let pesoTotal = 0;
     let altTotal = 0;
     const separador = ' ';
@@ -131,12 +129,12 @@ export const StatsProvider = ({ children }) => {
     <StatsContext.Provider
       value={{
         handleStats,
-        totalStats,
+        handleAverage,
         deleteStats,
-        prom,
+        maxStats,
+        totalStats,
         altura,
         peso,
-        maxStats,
       }}
     >
       {children}

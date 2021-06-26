@@ -1,9 +1,7 @@
-import { GeneralStats } from '../../components'
+import { GeneralStats } from '../../components';
 
-const StatsContainer = () => { 
-    return (
-        <GeneralStats /> 
-    )
-}
+const StatsContainer = () => {
+  return <GeneralStats />;
+};
 
 export default StatsContainer;
