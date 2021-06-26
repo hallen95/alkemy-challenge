@@ -44,21 +44,19 @@ const InputSearch = ({ searchResponse }) => {
         }
       }}
     >
-      {
-        <Form className="form__formik">
-          <MyTextInput
-            className="form__input"
-            label="hero"
-            name="hero"
-            type="text"
-            placeholder="Busque su héroe"
-          />
+      <Form className="form__formik">
+        <MyTextInput
+          className="form__input"
+          label="hero"
+          name="hero"
+          type="text"
+          placeholder="Busque su héroe"
+        />
 
-          <Button className="form__button" type="submit">
-            <span>Submit</span>
-          </Button>
-        </Form>
-      }
+        <Button className="form__button" type="submit">
+          <span>Submit</span>
+        </Button>
+      </Form>
     </Formik>
   );
 };

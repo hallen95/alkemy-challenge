@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import useHeroContext from './HeroContext';
 
 export const StatsContext = createContext([]);
 const useStatsContext = () => useContext(StatsContext);

@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import './card.css';
-import { Card, Button, Modal, Container, Row, Table } from 'react-bootstrap';
+import { Card, Button, Modal, Row, Table } from 'react-bootstrap';
 import useHeroContext from '../../context/HeroContext';
-import useStatsContext from '../../context/StatsContext';
 
 const CardItem = ({ hero }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { deleteGood, deleteBad } = useHeroContext();
-  const { altura, peso } = useStatsContext;
 
   return (
     <div

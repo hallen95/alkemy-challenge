@@ -1,7 +1,7 @@
 import { CardContainer, StatsContainer } from '../index';
 import './homecontainer.css';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Button } from 'react-bootstrap';
 import useHeroContext from '../../context/HeroContext';
 
 const HomeContainer = () => {

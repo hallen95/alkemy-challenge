@@ -38,7 +38,7 @@ export const HeroProvider = ({ children }) => {
 
   useEffect(() => {
     selectedHero.length >= 0 && handleAverage(selectedHero)
-  },[selectedHero])
+  },[selectedHero, handleAverage])
 
   /**************** AGREGANDO HEROES *****************/
   const addGood = (hero) => {

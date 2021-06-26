@@ -8,10 +8,6 @@ const SearchContainer = () => {
   const [dataResponse, setDataResponse] = useState([]);
   const { isLoading } = useHeroContext();
 
-  const searchResponse = (value) => {
-    setDataResponse(value);
-  };
-
   return (
     <Container fluid="sm" className="search__container">
       <Row className="home__text__row fs-1 text-uppercase text-center text-light">
@@ -37,7 +33,6 @@ const SearchContainer = () => {
           <Spinner
             animation="grow"
             role="status"
-            animation="border"
             style={{ width: '3rem', height: '3rem' }}
           />
         ) : null}

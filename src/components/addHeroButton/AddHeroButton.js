@@ -7,11 +7,7 @@ const AddHeroButton = (props) => {
   const { selectedHero } = useHeroContext();
   const [count, setCount] = useState(0);
   const [isAdded, setAdded] = useState(false);
-
-  useEffect(() => {
-    countPower(props.stats);
-  }, []);
-
+  
   const handleDuplicate = (id) => {
     const existId = selectedHero.find((hero) => hero.id === id);
     if (existId !== undefined) {
@@ -20,15 +16,17 @@ const AddHeroButton = (props) => {
       setAdded(false);
     }
   };
-
+  
   const countPower = (stats) => {
     let totalCount = 0;
-    Object.entries(stats).map((entry) => {
-      totalCount = totalCount + parseInt(entry[1]);
-    });
+    Object.entries(stats).map((entry) => totalCount = totalCount + parseInt(entry[1]));
     setCount(totalCount);
   };
-
+  
+    useEffect(() => {
+      countPower(props.stats);
+    });
+  
   const whichButton = (alignment) => {
     if (isAdded === true) {
       return (
@@ -65,7 +63,7 @@ const AddHeroButton = (props) => {
 
   useEffect(() => {
     handleDuplicate(props.id);
-  }, [whichButton]);
+  });
 
   return (
     <div>

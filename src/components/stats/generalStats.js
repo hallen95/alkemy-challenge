@@ -16,7 +16,7 @@ const GeneralStats = () => {
 
   useEffect(() => {
     maxStats(totalStats);
-  }, [totalStats]);
+  }, [maxStats, totalStats]);
 
   return (
     <Col md={8} lg={9} className="mx-auto py-2">

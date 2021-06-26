@@ -24,7 +24,7 @@ const CardResponse = ({ dataResponse }) => {
       {!isLoading ? (
         dataResponse.results.map((result) => {
           return (
-            <Col className="col-6 col-sm-4 col-lg-3">
+            <Col key={result.id} className="col-6 col-sm-4 col-lg-3">
               <Card
                 style={{
                   width: '',
@@ -44,7 +44,7 @@ const CardResponse = ({ dataResponse }) => {
         })
       ) : (
         <Spinner
-          animation="border"
+          animation="grow"
           style={{ width: '3rem', height: '3rem' }}
           role="status"
         />

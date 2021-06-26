@@ -15,7 +15,7 @@ const NavBar = () => {
       </Link>
       <Nav className="navbar__menu">
         <Link to="/search" className="navbar__link">
-          <Nav.Link href="#searching">Buscar Heroes</Nav.Link>
+          <div className="nav-link">Buscar Héroes</div>
         </Link>
         <Nav.Link
           className="navbar__link"
