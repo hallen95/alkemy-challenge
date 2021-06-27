@@ -49,7 +49,7 @@ const SignupForm = () => {
               })}
               onSubmit={(values) => {
                 axios
-                  .post('https://challenge-react.alkemy.org', values)
+                  .post('http://challenge-react.alkemy.org', values)
                   .then((res) => {
                     console.log(res.data.token);
                     localStorage.setItem('token', res.data.token);
